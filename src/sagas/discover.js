@@ -17,16 +17,23 @@ Mock.mock(/\/api\/users/, {
   ]
 });
 
+/**
+ * 使用 Genterator 函数进行处理异步数据
+ */
 function* fetchData(action) {
   try {
     const res = yield axios.get('/api/users');
     const action = fetchTableData(res.data);
-    yield put(action);
+    yield put(action); // 将 action 发送至 reducer
   } catch (e) {
+    // 错误处理
     throw new Error(e);
   }
 }
 
+/**
+ * 捕获 Action后，对副作用进行处理
+ */
 function* watchTableData() {
   yield takeEvery(FETCH_TABLE_LIST, fetchData);
 }

@@ -36,6 +36,7 @@ class DiscoverTable extends PureComponent {
   }
 }
 
+// Immutable 的 getIn 方法获取state 中的数据
 const mapStateToProps = state => ({
   result: state.getIn(['discover', 'result']),
   pagination: state.getIn(['discover', 'pagination']),
