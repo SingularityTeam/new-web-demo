@@ -1,8 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Layout, Breadcrumb } from 'antd';
 import VisChart from './components/VisChart';
 import Echarts from './components/ECharts';
 import { VisualizeContainer } from './style';
+import ChartList from './components/ChartList';
 
 const { Content } = Layout;
 
@@ -13,8 +15,9 @@ const Visualize = () => (
       <Breadcrumb.Item>可视化</Breadcrumb.Item>
     </Breadcrumb>
     <VisualizeContainer>
-      <VisChart />
-      <Echarts />
+      <Router>
+        <Route exact path="/visualize" component={ChartList} />
+      </Router>
     </VisualizeContainer>
   </Content>
 );

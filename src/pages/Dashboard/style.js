@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const DashBoardContent = styled.div`
-  margin: '0 16px';
+  margin: 0 16px;
 `;
 
 const DashBoardBreadcrumb = styled.div`
-  margin: '16px 0';
+  margin: 16px 0;
 `;
 
 const DashBoardContainer = styled.div`

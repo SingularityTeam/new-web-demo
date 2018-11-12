@@ -1,11 +1,5 @@
 const columns = [
   {
-    title: 'Id',
-    dataIndex: 'id',
-    sorter: true,
-    width: '10%'
-  },
-  {
     title: 'Name',
     dataIndex: 'name',
     width: '20%'
@@ -19,6 +13,7 @@ const columns = [
   {
     title: 'Age',
     dataIndex: 'age',
+    sorter: true,
     width: '20%'
   },
   {

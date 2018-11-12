@@ -23,6 +23,8 @@ class DiscoverTable extends PureComponent {
     const { result, pagination, loading, handleTableChange } = this.props;
     const data = result.toJS();
     const paper = pagination.toJS();
+    data.map(({ gender }, index, array) => (array[index].gender = gender ? 'Male' : 'Female'));
+
     return (
       <Table
         columns={columns}
