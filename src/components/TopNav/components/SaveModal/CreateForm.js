@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Form, Input } from 'antd';
 
-class CreateForm extends React.PureComponent {
+class CreateForm extends PureComponent {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,

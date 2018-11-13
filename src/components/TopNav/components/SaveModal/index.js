@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form } from 'antd';
+import { Button, Form, message } from 'antd';
 import CreateForm from './CreateForm';
-import { setModalVisible } from 'Actions/topNav';
+import { setModalVisible, saveDiscover } from 'Actions/topNav';
 
 const CreateModal = Form.create()(CreateForm);
 
-const SaveModal = ({ modalVisible, handleModalVisible }) => {
+const SaveModal = ({ modalVisible, discoverMeta, handleModalVisible, handlesaveDiscover }) => {
   let saveFormRef = null;
-
   /**
    * 表单字段验证
    */
@@ -20,9 +19,11 @@ const SaveModal = ({ modalVisible, handleModalVisible }) => {
         return;
       }
 
-      console.log('接受到表单的值', values);
       form.resetFields();
+      const saveMeta = discoverMeta.merge(values);
+      handlesaveDiscover(saveMeta); // 保存搜索信息
       handleModalVisible(false);
+      message.success('保存成功！');
     });
   };
 
@@ -43,15 +44,19 @@ const SaveModal = ({ modalVisible, handleModalVisible }) => {
 
 SaveModal.propTypes = {
   modalVisible: PropTypes.bool.isRequired,
-  handleModalVisible: PropTypes.func.isRequired
+  discoverMeta: PropTypes.object.isRequired,
+  handleModalVisible: PropTypes.func.isRequired,
+  handlesaveDiscover: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  modalVisible: state.getIn(['topNav', 'modalVisible'])
+  modalVisible: state.getIn(['topNav', 'save', 'modalVisible']),
+  discoverMeta: state.get('discover')
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleModalVisible: isVisible => dispatch(setModalVisible(isVisible))
+  handleModalVisible: isVisible => dispatch(setModalVisible(isVisible)),
+  handlesaveDiscover: values => dispatch(saveDiscover(values))
 });
 
 export default connect(

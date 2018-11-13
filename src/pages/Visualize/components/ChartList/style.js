@@ -6,7 +6,7 @@ const ListWrapper = styled.div`
   }
 
   .anticon {
-    margin0-top: 3px;
+    margin-top: 3px;
   }
 
   span {

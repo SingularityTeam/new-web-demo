@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { List, Icon } from 'antd';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ListWrapper } from './style';
 
 const data = [
@@ -33,22 +32,20 @@ const data = [
 ];
 
 const ChartList = () => (
-  <Router>
-    <ListWrapper>
-      <List
-        bordered
-        dataSource={data}
-        renderItem={({ id, chartType, title }) => (
-          <List.Item>
-            <Link to={'/visualize/' + id}>
-              <Icon type={chartType} />
-              <span>{title}</span>
-            </Link>
-          </List.Item>
-        )}
-      />
-    </ListWrapper>
-  </Router>
+  <ListWrapper>
+    <List
+      bordered
+      dataSource={data}
+      renderItem={({ id, chartType, title }) => (
+        <List.Item>
+          <Link to={'/visualize/' + id}>
+            <Icon type={chartType} />
+            <span>{title}</span>
+          </Link>
+        </List.Item>
+      )}
+    />
+  </ListWrapper>
 );
 
 export default ChartList;

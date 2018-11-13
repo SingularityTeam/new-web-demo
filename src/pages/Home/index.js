@@ -14,9 +14,9 @@ const Home = () => (
       <Layout>
         <Header />
         <Route exact path="/" component={Discover} />
-        <Route exact path="/discover" component={Discover} />
-        <Route exact path="/visualize" component={Visualize} />
-        <Route exact path="/dashboard" component={DashBoard} />
+        <Route path="/discover" component={Discover} />
+        <Route path="/visualize" component={Visualize} />
+        <Route path="/dashboard" component={DashBoard} />
       </Layout>
     </Layout>
   </Router>

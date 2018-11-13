@@ -7,7 +7,7 @@ const fetchTableList = () => ({
 
 const fetchTableData = data => ({
   type: FETCH_TABLE_DATA,
-  data: fromJS(data)
+  data: fromJS(data) // 注意将数据以 Immutable 类型传递
 });
 
 const changeTableList = (pagination) => ({
