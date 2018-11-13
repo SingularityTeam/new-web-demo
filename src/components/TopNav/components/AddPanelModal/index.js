@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Modal, List, Button } from 'antd';
+import { Modal, List } from 'antd';
 import { setAddPanelModalVisible } from 'Actions/topNav';
 import { addPanel } from 'Actions/dashboard';
 import { PanelItem } from './style';
@@ -35,27 +35,22 @@ const panels = [
 ];
 
 const AddPanelModal = ({ visible, handleModalVisible, handleAddPanel }) => (
-  <Fragment>
-    <Button icon="file-add" onClick={() => handleModalVisible(true)}>
-      添加可视化
-    </Button>
-    <Modal visible={visible} centered footer={null} title="添加可视化" onCancel={() => handleModalVisible(false)}>
-      <List
-        bordered
-        dataSource={panels}
-        renderItem={panel => (
-          <List.Item
-            onClick={() => {
-              handleAddPanel(panel);
-              handleModalVisible(false);
-            }}
-          >
-            <PanelItem>{panel.title}</PanelItem>
-          </List.Item>
-        )}
-      />
-    </Modal>
-  </Fragment>
+  <Modal visible={visible} centered footer={null} title="添加可视化" onCancel={() => handleModalVisible(false)}>
+    <List
+      bordered
+      dataSource={panels}
+      renderItem={panel => (
+        <List.Item
+          onClick={() => {
+            handleAddPanel(panel);
+            handleModalVisible(false);
+          }}
+        >
+          <PanelItem>{panel.title}</PanelItem>
+        </List.Item>
+      )}
+    />
+  </Modal>
 );
 
 AddPanelModal.propTypes = {

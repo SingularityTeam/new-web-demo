@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, message } from 'antd';
+import { Form, message } from 'antd';
 import CreateForm from './CreateForm';
 import { setModalVisible, saveDiscover } from 'Actions/topNav';
 
@@ -28,17 +28,12 @@ const SaveModal = ({ modalVisible, discoverMeta, handleModalVisible, handlesaveD
   };
 
   return (
-    <Fragment>
-      <Button icon="save" onClick={() => handleModalVisible(true)}>
-        保存
-      </Button>
-      <CreateModal
-        wrappedComponentRef={formRef => (saveFormRef = formRef)}
-        visible={modalVisible}
-        onCancel={() => handleModalVisible(false)}
-        onCreate={handleCreateModal}
-      />
-    </Fragment>
+    <CreateModal
+      wrappedComponentRef={formRef => (saveFormRef = formRef)}
+      visible={modalVisible}
+      onCancel={() => handleModalVisible(false)}
+      onCreate={handleCreateModal}
+    />
   );
 };
 

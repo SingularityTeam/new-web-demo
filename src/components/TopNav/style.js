@@ -5,7 +5,7 @@ const TopNavContainer = styled.div`
   margin-bottom: 15px;
   padding: 15px;
 
-  Button {
+  .ant-btn {
     margin: 0 10px;
   }
 `;

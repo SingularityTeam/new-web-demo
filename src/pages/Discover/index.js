@@ -6,6 +6,24 @@ import { DiscoverContainer } from './style';
 
 const { Content } = Layout;
 
+const navItem = [
+  {
+    type: 'new',
+    icon: 'plus',
+    name: '新建'
+  },
+  {
+    type: 'save',
+    icon: 'save',
+    name: '保存'
+  },
+  {
+    type: 'open',
+    icon: 'folder-open',
+    name: '打开'
+  }
+];
+
 const Discover = () => (
   <Content style={{ margin: '0 16px' }}>
     <Breadcrumb style={{ margin: '16px 0' }}>
@@ -13,7 +31,7 @@ const Discover = () => (
       <Breadcrumb.Item>搜索</Breadcrumb.Item>
     </Breadcrumb>
     <DiscoverContainer>
-      <TopNav />
+      <TopNav navItem={navItem} />
       <DiscoverTable />
     </DiscoverContainer>
   </Content>

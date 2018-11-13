@@ -8,6 +8,24 @@ import VisChart from './components/VisChart';
 
 const { Content } = Layout;
 
+const navItem = [
+  {
+    type: 'new',
+    icon: 'plus',
+    name: '新建'
+  },
+  {
+    type: 'save',
+    icon: 'save',
+    name: '保存'
+  },
+  {
+    type: 'open',
+    icon: 'folder-open',
+    name: '打开'
+  }
+];
+
 const Visualize = () => (
   <Router>
     <Content style={{ margin: '0 16px' }}>
@@ -16,7 +34,7 @@ const Visualize = () => (
         <Breadcrumb.Item>可视化</Breadcrumb.Item>
       </Breadcrumb>
       <VisualizeContainer>
-        <TopNav />
+        <TopNav navItem={navItem} />
         <ChartList />
         <Route path="/visualize/:id" component={VisChart} />
       </VisualizeContainer>
