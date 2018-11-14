@@ -39,7 +39,7 @@ const DashBoard = () => (
         </Breadcrumb>
       </DashBoardBreadcrumb>
       <DashBoardContainer>
-        <TopNav navItem={navItem} />
+        <TopNav typeName="dashboard" navItem={navItem} />
         <Panel />
       </DashBoardContainer>
     </Content>

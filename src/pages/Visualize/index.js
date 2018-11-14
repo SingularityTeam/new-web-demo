@@ -34,7 +34,7 @@ const Visualize = () => (
         <Breadcrumb.Item>可视化</Breadcrumb.Item>
       </Breadcrumb>
       <VisualizeContainer>
-        <TopNav navItem={navItem} />
+        <TopNav typeName="visualize" navItem={navItem} />
         <ChartList />
         <Route path="/visualize/:id" component={VisChart} />
       </VisualizeContainer>

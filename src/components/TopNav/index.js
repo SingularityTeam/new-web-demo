@@ -4,17 +4,21 @@ import { connect } from 'react-redux';
 import { Button } from 'antd';
 import SaveModal from './components/SaveModal';
 import AddPanelModal from './components/AddPanelModal';
-import { setModalVisible } from 'Actions/topNav';
+import OpenModal from './components/OpenModal';
+import { setSaveModalVisible, setOpenModalVisible, setAddPanelModalVisible } from 'Actions/topNav';
 import { TopNavContainer } from './style';
 
-const TopNav = ({ navItem, handleModalVisible }) => {
+const TopNav = ({ typeName, navItem, handleSaveModalVisible, handleOpenModalVisible, handleAddPanelModalVisible }) => {
   const handleClick = type => {
     switch (type) {
       case 'save':
-        handleModalVisible(true);
+        handleSaveModalVisible(true);
+        break;
+      case 'open':
+        handleOpenModalVisible(true);
         break;
       case 'addPanel':
-        handleModalVisible(true);
+        handleAddPanelModalVisible(true);
         break;
     }
   };
@@ -26,19 +30,25 @@ const TopNav = ({ navItem, handleModalVisible }) => {
           {name}
         </Button>
       ))}
-      <SaveModal />
+      <SaveModal typeName={typeName} />
+      <OpenModal typeName={typeName} />
       <AddPanelModal />
     </TopNavContainer>
   );
 };
 
 TopNav.propTypes = {
+  typeName: PropTypes.string.isRequired,
   navItem: PropTypes.array.isRequired,
-  handleModalVisible: PropTypes.func.isRequired
+  handleSaveModalVisible: PropTypes.func.isRequired,
+  handleOpenModalVisible: PropTypes.func.isRequired,
+  handleAddPanelModalVisible: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  handleModalVisible: isVisible => dispatch(setModalVisible(isVisible))
+  handleSaveModalVisible: isVisible => dispatch(setSaveModalVisible(isVisible)),
+  handleOpenModalVisible: isVisible => dispatch(setOpenModalVisible(isVisible)),
+  handleAddPanelModalVisible: isVisible => dispatch(setAddPanelModalVisible(isVisible))
 });
 
 export default connect(

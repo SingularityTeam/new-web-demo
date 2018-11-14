@@ -3,26 +3,62 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Form, message } from 'antd';
 import CreateForm from './CreateForm';
-import { setModalVisible, saveDiscover } from 'Actions/topNav';
+import { setSaveModalVisible, saveDiscover, saveVisualize, saveDashboard } from 'Actions/topNav';
 
 const CreateModal = Form.create()(CreateForm);
 
-const SaveModal = ({ modalVisible, discoverMeta, handleModalVisible, handlesaveDiscover }) => {
+const SaveModal = ({
+  typeName,
+  modalVisible,
+  discoverMeta,
+  visualizeMeta,
+  dashboardMeta,
+  handleSaveModalVisible,
+  handleSaveDiscover,
+  handleSaveVisualize,
+  handleSaveDashboard
+}) => {
   let saveFormRef = null;
+  let saveTypeName = '';
+
+  switch (typeName) {
+    case 'discover':
+      saveTypeName = '搜索';
+      break;
+    case 'visualize':
+      saveTypeName = '可视化';
+      break;
+    case 'dashboard':
+      saveTypeName = '仪表盘';
+      break;
+  }
+
   /**
    * 表单字段验证
    */
   const handleCreateModal = () => {
     const { form } = saveFormRef.props;
+
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
 
+      // 保存信息
+      switch (typeName) {
+        case 'discover':
+          handleSaveDiscover(discoverMeta.merge(values));
+          break;
+        case 'visualize':
+          handleSaveVisualize(visualizeMeta.merge(values));
+          break;
+        case 'dashboard':
+          handleSaveDashboard(dashboardMeta.merge(values));
+          break;
+      }
+
       form.resetFields();
-      const saveMeta = discoverMeta.merge(values);
-      handlesaveDiscover(saveMeta); // 保存搜索信息
-      handleModalVisible(false);
+      handleSaveModalVisible(false);
       message.success('保存成功！');
     });
   };
@@ -31,27 +67,37 @@ const SaveModal = ({ modalVisible, discoverMeta, handleModalVisible, handlesaveD
     <CreateModal
       wrappedComponentRef={formRef => (saveFormRef = formRef)}
       visible={modalVisible}
-      onCancel={() => handleModalVisible(false)}
+      saveTypeName={saveTypeName}
+      onCancel={() => handleSaveModalVisible(false)}
       onCreate={handleCreateModal}
     />
   );
 };
 
 SaveModal.propTypes = {
+  typeName: PropTypes.string.isRequired,
   modalVisible: PropTypes.bool.isRequired,
   discoverMeta: PropTypes.object.isRequired,
-  handleModalVisible: PropTypes.func.isRequired,
-  handlesaveDiscover: PropTypes.func.isRequired
+  visualizeMeta: PropTypes.object.isRequired,
+  dashboardMeta: PropTypes.object.isRequired,
+  handleSaveModalVisible: PropTypes.func.isRequired,
+  handleSaveDiscover: PropTypes.func.isRequired,
+  handleSaveVisualize: PropTypes.func.isRequired,
+  handleSaveDashboard: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   modalVisible: state.getIn(['topNav', 'save', 'modalVisible']),
-  discoverMeta: state.get('discover')
+  discoverMeta: state.get('discover'),
+  visualizeMeta: state.get('visualize'),
+  dashboardMeta: state.get('dashboard')
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleModalVisible: isVisible => dispatch(setModalVisible(isVisible)),
-  handlesaveDiscover: values => dispatch(saveDiscover(values))
+  handleSaveModalVisible: isVisible => dispatch(setSaveModalVisible(isVisible)),
+  handleSaveDiscover: values => dispatch(saveDiscover(values)),
+  handleSaveVisualize: values => dispatch(saveVisualize(values)),
+  handleSaveDashboard: values => dispatch(saveDashboard(values))
 });
 
 export default connect(

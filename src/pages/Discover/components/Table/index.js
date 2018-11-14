@@ -6,6 +6,10 @@ import columns from './columns';
 import { fetchTableList, changeTableList } from 'Actions/discover';
 
 class DiscoverTable extends PureComponent {
+  state = {
+    loading: false
+  };
+
   static propTypes = {
     result: PropTypes.any.isRequired,
     pagination: PropTypes.object.isRequired,

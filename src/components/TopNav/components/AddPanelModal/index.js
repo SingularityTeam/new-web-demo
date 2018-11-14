@@ -34,8 +34,8 @@ const panels = [
   }
 ];
 
-const AddPanelModal = ({ visible, handleModalVisible, handleAddPanel }) => (
-  <Modal visible={visible} centered footer={null} title="添加可视化" onCancel={() => handleModalVisible(false)}>
+const AddPanelModal = ({ visible, handleAddPanelModalVisible, handleAddPanel }) => (
+  <Modal visible={visible} centered footer={null} title="添加可视化" onCancel={() => handleAddPanelModalVisible(false)}>
     <List
       bordered
       dataSource={panels}
@@ -43,7 +43,7 @@ const AddPanelModal = ({ visible, handleModalVisible, handleAddPanel }) => (
         <List.Item
           onClick={() => {
             handleAddPanel(panel);
-            handleModalVisible(false);
+            handleAddPanelModalVisible(false);
           }}
         >
           <PanelItem>{panel.title}</PanelItem>
@@ -55,7 +55,7 @@ const AddPanelModal = ({ visible, handleModalVisible, handleAddPanel }) => (
 
 AddPanelModal.propTypes = {
   visible: PropTypes.bool.isRequired,
-  handleModalVisible: PropTypes.func.isRequired,
+  handleAddPanelModalVisible: PropTypes.func.isRequired,
   handleAddPanel: PropTypes.func.isRequired
 };
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleModalVisible: isVisible => dispatch(setAddPanelModalVisible(isVisible)),
+  handleAddPanelModalVisible: isVisible => dispatch(setAddPanelModalVisible(isVisible)),
   handleAddPanel: panel => dispatch(addPanel(panel))
 });
 
