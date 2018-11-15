@@ -1,15 +1,11 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Table } from 'antd';
 import columns from './columns';
 import { fetchTableList, changeTableList } from 'Actions/discover';
 
 class DiscoverTable extends PureComponent {
-  state = {
-    loading: false
-  };
-
   static propTypes = {
     result: PropTypes.any.isRequired,
     pagination: PropTypes.object.isRequired,
@@ -44,9 +40,9 @@ class DiscoverTable extends PureComponent {
 
 // Immutable 的 getIn 方法获取state 中的数据
 const mapStateToProps = state => ({
-  result: state.getIn(['discover', 'result']),
-  pagination: state.getIn(['discover', 'pagination']),
-  loading: state.getIn(['discover', 'loading'])
+  result: state.getIn(['discover', 'table', 'result']),
+  pagination: state.getIn(['discover', 'table', 'pagination']),
+  loading: state.getIn(['discover', 'table', 'loading'])
 });
 
 const mapDispatchToProps = dispatch => ({

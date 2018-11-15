@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines } from 'react-vis';
 import { series1, series2, series3 } from './data';
-import { VisContainer } from './style';
+import { VisContainer } from '../style';
 import 'react-vis/dist/style.css';
 
 const BaseVis = ({ VisSeries }) => (

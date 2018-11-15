@@ -8,9 +8,18 @@ import OpenModal from './components/OpenModal';
 import { setSaveModalVisible, setOpenModalVisible, setAddPanelModalVisible } from 'Actions/topNav';
 import { TopNavContainer } from './style';
 
-const TopNav = ({ typeName, navItem, handleSaveModalVisible, handleOpenModalVisible, handleAddPanelModalVisible }) => {
+const TopNav = ({
+  typeName,
+  navItem,
+  DiscoverTable,
+  handleSaveModalVisible,
+  handleOpenModalVisible,
+  handleAddPanelModalVisible
+}) => {
   const handleClick = type => {
     switch (type) {
+      case 'new':
+        break;
       case 'save':
         handleSaveModalVisible(true);
         break;
@@ -30,7 +39,7 @@ const TopNav = ({ typeName, navItem, handleSaveModalVisible, handleOpenModalVisi
           {name}
         </Button>
       ))}
-      <SaveModal typeName={typeName} />
+      <SaveModal typeName={typeName} DiscoverTable={DiscoverTable} />
       <OpenModal typeName={typeName} />
       <AddPanelModal />
     </TopNavContainer>
@@ -40,6 +49,7 @@ const TopNav = ({ typeName, navItem, handleSaveModalVisible, handleOpenModalVisi
 TopNav.propTypes = {
   typeName: PropTypes.string.isRequired,
   navItem: PropTypes.array.isRequired,
+  DiscoverTable: PropTypes.func,
   handleSaveModalVisible: PropTypes.func.isRequired,
   handleOpenModalVisible: PropTypes.func.isRequired,
   handleAddPanelModalVisible: PropTypes.func.isRequired

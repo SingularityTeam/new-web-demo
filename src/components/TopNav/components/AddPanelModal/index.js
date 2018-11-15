@@ -5,32 +5,37 @@ import { Modal, List } from 'antd';
 import { setAddPanelModalVisible } from 'Actions/topNav';
 import { addPanel } from 'Actions/dashboard';
 import { PanelItem } from './style';
-import BaseVis from 'Pages/Visualize/components/VisChart/BaseVis';
-import { VerticalBarSeries, LineSeries, MarkSeries } from 'react-vis';
+import VerticalBar from 'Pages/Visualize/components/Charts/VerticalBar';
+import Line from 'Pages/Visualize/components/Charts/Line';
+import Mark from 'Pages/Visualize/components/Charts/Mark';
+import Bar from 'Pages/Visualize/components/Charts/Bar';
+import Graph from 'Pages/Visualize/components/Charts/Graph';
 
 const panels = [
   {
     id: 1,
     title: 'React Vis 直方图',
-    Component: <BaseVis VisSeries={VerticalBarSeries} />
+    Component: <VerticalBar />
   },
   {
     id: 2,
     title: 'React Vis 折线图',
-    Component: <BaseVis VisSeries={LineSeries} />
+    Component: <Line />
   },
   {
     id: 3,
     title: 'React Vis 散点图',
-    Component: <BaseVis VisSeries={MarkSeries} />
+    Component: <Mark />
   },
   {
     id: 4,
-    title: 'Echarts 柱状图'
+    title: 'Echarts 柱状图',
+    Component: <Bar />
   },
   {
     id: 5,
-    title: 'Echarts 关系图'
+    title: 'Echarts 关系图',
+    Component: <Graph />
   }
 ];
 

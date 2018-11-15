@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { FETCH_NPM_DEP_GRAPH } from '../constants/visualize';
-import { getGraphChartOption } from '../pages/Visualize/components/ECharts/graph_option';
+import { getGraphChartOption } from '../pages/Visualize/components/Charts/ECharts/graph_option';
 
 const defaultState = fromJS({
   isShowLoading: true,
@@ -24,7 +24,7 @@ const mergeGraphOption = (state, res) => {
   res.edges.forEach(({ sourceID: source, targetID: target }) =>
     newState.graphOption.series[0].edges.push({ source, target })
   );
-  
+
   return state.merge({ isShowLoading: false, graphOption: fromJS(newState.graphOption) });
 };
 

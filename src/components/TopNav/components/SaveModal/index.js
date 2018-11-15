@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fromJS } from 'immutable';
 import { Form, message } from 'antd';
 import CreateForm from './CreateForm';
 import { setSaveModalVisible, saveDiscover, saveVisualize, saveDashboard } from 'Actions/topNav';
@@ -10,9 +11,7 @@ const CreateModal = Form.create()(CreateForm);
 const SaveModal = ({
   typeName,
   modalVisible,
-  discoverMeta,
-  visualizeMeta,
-  dashboardMeta,
+  DiscoverTable,
   handleSaveModalVisible,
   handleSaveDiscover,
   handleSaveVisualize,
@@ -44,16 +43,19 @@ const SaveModal = ({
         return;
       }
 
+      let component = null;
+
       // 保存信息
       switch (typeName) {
         case 'discover':
-          handleSaveDiscover(discoverMeta.merge(values));
+          component = fromJS({ Component: DiscoverTable });
+          handleSaveDiscover(component.merge(values));
           break;
         case 'visualize':
-          handleSaveVisualize(visualizeMeta.merge(values));
+          // handleSaveVisualize(visualizeMeta.merge(values));
           break;
         case 'dashboard':
-          handleSaveDashboard(dashboardMeta.merge(values));
+          // handleSaveDashboard(dashboardMeta.merge(values));
           break;
       }
 
@@ -77,9 +79,7 @@ const SaveModal = ({
 SaveModal.propTypes = {
   typeName: PropTypes.string.isRequired,
   modalVisible: PropTypes.bool.isRequired,
-  discoverMeta: PropTypes.object.isRequired,
-  visualizeMeta: PropTypes.object.isRequired,
-  dashboardMeta: PropTypes.object.isRequired,
+  DiscoverTable: PropTypes.func,
   handleSaveModalVisible: PropTypes.func.isRequired,
   handleSaveDiscover: PropTypes.func.isRequired,
   handleSaveVisualize: PropTypes.func.isRequired,
@@ -87,17 +87,14 @@ SaveModal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  modalVisible: state.getIn(['topNav', 'save', 'modalVisible']),
-  discoverMeta: state.get('discover'),
-  visualizeMeta: state.get('visualize'),
-  dashboardMeta: state.get('dashboard')
+  modalVisible: state.getIn(['topNav', 'save', 'modalVisible'])
 });
 
 const mapDispatchToProps = dispatch => ({
   handleSaveModalVisible: isVisible => dispatch(setSaveModalVisible(isVisible)),
-  handleSaveDiscover: values => dispatch(saveDiscover(values)),
-  handleSaveVisualize: values => dispatch(saveVisualize(values)),
-  handleSaveDashboard: values => dispatch(saveDashboard(values))
+  handleSaveDiscover: meta => dispatch(saveDiscover(meta)),
+  handleSaveVisualize: meta => dispatch(saveVisualize(meta)),
+  handleSaveDashboard: meta => dispatch(saveDashboard(meta))
 });
 
 export default connect(

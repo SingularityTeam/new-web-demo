@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { FETCH_TABLE_LIST, FETCH_TABLE_DATA, CHANGE_TABLE_LIST } from '../constants/discover';
+import { FETCH_TABLE_LIST, FETCH_TABLE_DATA, CHANGE_TABLE_LIST } from '../../constants/discover';
 
 // 将数 state 转为 Immutable 类型的数据，以保证数据不可突变
 const defaultState = fromJS({
@@ -15,6 +15,7 @@ const defaultPagination = defaultState.get('pagination');
 /**
  * 获取当前页数据
  */
+
 const loadCurrentData = (state, list, pagination = defaultPagination) => {
   const { current, pageSize } = pagination.toJS();
   const result = list.slice(pageSize * (current - 1), pageSize * current);

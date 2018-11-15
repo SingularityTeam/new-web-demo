@@ -1,11 +1,10 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
-import getBarChartOption from './bar_option';
-import { getLoadingOption } from './graph_option';
+import { getLoadingOption } from './ECharts/graph_option';
 import { fetchGraph } from 'Actions/visualize';
-import { EchartsContainer } from './style';
+import { VisContainer } from './style';
 
 class Echarts extends PureComponent {
   static propTypes = {
@@ -22,19 +21,14 @@ class Echarts extends PureComponent {
   render() {
     const { isShowLoading, graphOption } = this.props;
     return (
-      <Fragment>
-        <EchartsContainer>
-          <ReactEcharts option={getBarChartOption()} style={{ width: '600px', height: '400px' }} />
-        </EchartsContainer>
-        <EchartsContainer>
-          <ReactEcharts
-            option={graphOption.toJS()}
-            style={{ width: '600px', height: '400px' }}
-            loadingOption={getLoadingOption()}
-            showLoading={isShowLoading}
-          />
-        </EchartsContainer>
-      </Fragment>
+      <VisContainer>
+        <ReactEcharts
+          option={graphOption.toJS()}
+          style={{ width: '600px', height: '400px' }}
+          loadingOption={getLoadingOption()}
+          showLoading={isShowLoading}
+        />
+      </VisContainer>
     );
   }
 }

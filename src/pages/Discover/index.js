@@ -31,7 +31,7 @@ const Discover = () => (
       <Breadcrumb.Item>搜索</Breadcrumb.Item>
     </Breadcrumb>
     <DiscoverContainer>
-      <TopNav typeName="discover" navItem={navItem} />
+      <TopNav typeName="discover" navItem={navItem} DiscoverTable={DiscoverTable} />
       <DiscoverTable />
     </DiscoverContainer>
   </Content>

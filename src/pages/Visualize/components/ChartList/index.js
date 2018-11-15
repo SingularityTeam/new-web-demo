@@ -6,28 +6,28 @@ import { ListWrapper } from './style';
 const data = [
   {
     id: 1,
-    chartType: 'bar-chart',
-    title: 'React Vis 直方图'
+    title: 'React Vis 直方图',
+    chartType: 'bar-chart'
   },
   {
     id: 2,
-    chartType: 'line-chart',
-    title: 'React Vis 折线图'
+    title: 'React Vis 折线图',
+    chartType: 'line-chart'
   },
   {
     id: 3,
-    chartType: 'dot-chart',
-    title: 'React Vis 散点图'
+    title: 'React Vis 散点图',
+    chartType: 'dot-chart'
   },
   {
     id: 4,
-    chartType: 'stock',
-    title: 'Echarts 柱状图'
+    title: 'Echarts 柱状图',
+    chartType: 'stock'
   },
   {
     id: 5,
-    chartType: 'radar-chart',
-    title: 'Echarts 关系图'
+    title: 'Echarts 关系图',
+    chartType: 'radar-chart'
   }
 ];
 

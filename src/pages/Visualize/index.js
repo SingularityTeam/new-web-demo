@@ -4,7 +4,11 @@ import { Layout, Breadcrumb } from 'antd';
 import { VisualizeContainer } from './style';
 import TopNav from 'Components/TopNav';
 import ChartList from './components/ChartList';
-import VisChart from './components/VisChart';
+import VerticalBar from './components/Charts/VerticalBar';
+import Line from './components/Charts/Line';
+import Mark from './components/Charts/Mark';
+import Bar from './components/Charts/Bar';
+import Graph from './components/Charts/Graph';
 
 const { Content } = Layout;
 
@@ -26,20 +30,53 @@ const navItem = [
   }
 ];
 
-const Visualize = () => (
-  <Router>
-    <Content style={{ margin: '0 16px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>首页</Breadcrumb.Item>
-        <Breadcrumb.Item>可视化</Breadcrumb.Item>
-      </Breadcrumb>
-      <VisualizeContainer>
-        <TopNav typeName="visualize" navItem={navItem} />
-        <ChartList />
-        <Route path="/visualize/:id" component={VisChart} />
-      </VisualizeContainer>
-    </Content>
-  </Router>
-);
+const components = [
+  {
+    id: 1,
+    Component: VerticalBar
+  },
+  {
+    id: 2,
+    Component: Line
+  },
+  {
+    id: 3,
+    Component: Mark
+  },
+  {
+    id: 4,
+    Component: Bar
+  },
+  {
+    id: 5,
+    Component: Graph
+  }
+];
+
+const VisComponent = ({ match }) => {
+  return components.map(({ id, Component }) => {
+    if (String(id) === match.params.id) {
+      return <Component key={id} />;
+    }
+  });
+};
+
+const Visualize = () => {
+  return (
+    <Router>
+      <Content style={{ margin: '0 16px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>首页</Breadcrumb.Item>
+          <Breadcrumb.Item>可视化</Breadcrumb.Item>
+        </Breadcrumb>
+        <VisualizeContainer>
+          <TopNav typeName="visualize" navItem={navItem} />
+          <ChartList />
+          <Route path="/visualize/:id" component={VisComponent} />
+        </VisualizeContainer>
+      </Content>
+    </Router>
+  );
+};
 
 export default Visualize;

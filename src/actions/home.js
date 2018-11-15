@@ -1,12 +1,9 @@
-import { CHANGE_COLLAPSED, CHANGE_KEYPATH } from '../constants/home';
-
-const changeCollapsed = () => ({
-  type: CHANGE_COLLAPSED
-});
+import { fromJS } from 'immutable';
+import { CHANGE_KEYPATH } from '../constants/home';
 
 const changeKeyPath = keyPath => ({
   type: CHANGE_KEYPATH,
-  keyPath
+  keyPath: fromJS(keyPath)
 });
 
-export { changeCollapsed, changeKeyPath };
+export { changeKeyPath };
