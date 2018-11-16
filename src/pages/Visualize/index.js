@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Layout, Breadcrumb } from 'antd';
 import { VisualizeContainer } from './style';
@@ -61,7 +62,9 @@ const VisComponent = ({ match }) => {
   });
 };
 
-const Visualize = () => {
+const Visualize = ({ match }) => {
+  console.log(match);
+
   return (
     <Router>
       <Content style={{ margin: '0 16px' }}>
@@ -77,6 +80,10 @@ const Visualize = () => {
       </Content>
     </Router>
   );
+};
+
+Visualize.propTypes = {
+  match: PropTypes.object
 };
 
 export default Visualize;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
 import SaveModal from './components/SaveModal';
@@ -11,6 +12,7 @@ import { TopNavContainer } from './style';
 const TopNav = ({
   typeName,
   navItem,
+  history,
   DiscoverTable,
   handleSaveModalVisible,
   handleOpenModalVisible,
@@ -19,6 +21,7 @@ const TopNav = ({
   const handleClick = type => {
     switch (type) {
       case 'new':
+        history.push('/' + typeName);
         break;
       case 'save':
         handleSaveModalVisible(true);
@@ -49,6 +52,7 @@ const TopNav = ({
 TopNav.propTypes = {
   typeName: PropTypes.string.isRequired,
   navItem: PropTypes.array.isRequired,
+  history: PropTypes.object,
   DiscoverTable: PropTypes.func,
   handleSaveModalVisible: PropTypes.func.isRequired,
   handleOpenModalVisible: PropTypes.func.isRequired,
@@ -61,7 +65,9 @@ const mapDispatchToProps = dispatch => ({
   handleAddPanelModalVisible: isVisible => dispatch(setAddPanelModalVisible(isVisible))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(TopNav);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(TopNav)
+);
