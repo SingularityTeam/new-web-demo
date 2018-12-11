@@ -1,19 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
-import { changeKeyPath } from 'Actions/home';
-import { Logo } from './style';
+import { NavLink } from 'react-router-dom';
 
 const { Sider } = Layout;
 const { SubMenu, Item } = Menu;
 
 class SideBar extends PureComponent {
   static propTypes = {
-    keyPath: PropTypes.any,
-    history: PropTypes.object,
-    handleChangeKeyPath: PropTypes.func
+    match: PropTypes.object,
+    history: PropTypes.object
   };
 
   state = {
@@ -27,26 +23,27 @@ class SideBar extends PureComponent {
   };
 
   render() {
-    const { keyPath, history, handleChangeKeyPath } = this.props;
+    const { match, history } = this.props;
     const { isCollapsed } = this.state;
     const { pathname } = history.location;
-    const keyPathName = pathname === '/' ? ['/discover'] : [pathname];
+    // 根据路由来匹配侧边栏菜单高亮
+    const selectedKeys = pathname === match.path ? `${match.path}/discover` : pathname;
 
     return (
       <Sider collapsible collapsed={isCollapsed} onCollapse={this.handleCollapse}>
-        <Logo />
-        <Menu theme="dark" selectedKeys={keyPathName || keyPath.toJS()} mode="inline" onClick={handleChangeKeyPath}>
-          <Item key="/discover">
-            <Link to="/discover">
+        <div className="home-logo" />
+        <Menu theme="dark" mode="inline" selectedKeys={[selectedKeys]}>
+          <Item key={`${match.path}/discover`}>
+            <NavLink to={`${match.path}/discover`}>
               <Icon type="search" />
               <span>搜索</span>
-            </Link>
+            </NavLink>
           </Item>
-          <Item key="/visualize">
-            <Link to="/visualize">
+          <Item key={`${match.path}/visualize`}>
+            <NavLink to={`${match.path}/visualize`}>
               <Icon type="eye" />
               <span>可视化</span>
-            </Link>
+            </NavLink>
           </Item>
           <SubMenu
             key="3"
@@ -80,11 +77,11 @@ class SideBar extends PureComponent {
             <Item key="41">告警记录</Item>
             <Item key="42">告警策略</Item>
           </SubMenu>
-          <Item key="/dashboard">
-            <Link to="/dashboard">
+          <Item key={`${match.path}/dashboard`}>
+            <NavLink to={`${match.path}/dashboard`}>
               <Icon type="dashboard" />
               <span>仪表盘</span>
-            </Link>
+            </NavLink>
           </Item>
           <SubMenu
             key="6"
@@ -114,6 +111,12 @@ class SideBar extends PureComponent {
               <Item key="672">备份策略</Item>
               <Item key="673">恢复</Item>
             </SubMenu>
+            <SubMenu key={`${match.path}/management/storage`} title="系统管理">
+              <Item key={`${match.path}/management/storage/disk`}>
+                <NavLink to={`${match.path}/management/storage/disk`}>存储管理</NavLink>
+              </Item>
+              <Item key="682">容器及服务管理</Item>
+            </SubMenu>
           </SubMenu>
         </Menu>
       </Sider>
@@ -121,17 +124,4 @@ class SideBar extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  keyPath: state.getIn(['home', 'keyPath'])
-});
-
-const mapStateToDispatch = dispatch => ({
-  handleChangeKeyPath: ({ keyPath }) => dispatch(changeKeyPath(keyPath))
-});
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapStateToDispatch
-  )(SideBar)
-);
+export default SideBar;

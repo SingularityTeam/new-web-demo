@@ -1,14 +1,14 @@
 import { fromJS } from 'immutable';
-import { CHANGE_KEYPATH } from '../constants/home';
+import { SET_LOGGED_USER } from '../constants/login';
 
 const defaultState = fromJS({
-  keyPath: null
+  logged: true
 });
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case CHANGE_KEYPATH:
-      return state.set('keyPath', action.keyPath);
+    case SET_LOGGED_USER:
+      return state.set('logged', action.logged);
     default:
       return state;
   }

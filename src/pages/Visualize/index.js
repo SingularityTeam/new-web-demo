@@ -62,25 +62,21 @@ const VisComponent = ({ match }) => {
   });
 };
 
-const Visualize = ({ match }) => {
-  console.log(match);
-
-  return (
-    <Router>
-      <Content style={{ margin: '0 16px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>首页</Breadcrumb.Item>
-          <Breadcrumb.Item>可视化</Breadcrumb.Item>
-        </Breadcrumb>
-        <VisualizeContainer>
-          <TopNav typeName="visualize" navItem={navItem} />
-          <ChartList />
-          <Route path="/visualize/:id" component={VisComponent} />
-        </VisualizeContainer>
-      </Content>
-    </Router>
-  );
-};
+const Visualize = ({ match }) => (
+  <Router>
+    <Content style={{ margin: '0 16px' }}>
+      <Breadcrumb style={{ margin: '16px 0' }}>
+        <Breadcrumb.Item>首页</Breadcrumb.Item>
+        <Breadcrumb.Item>可视化</Breadcrumb.Item>
+      </Breadcrumb>
+      <VisualizeContainer>
+        <TopNav typeName="visualize" navItem={navItem} />
+        <ChartList />
+        <Route path="/visualize/:id" component={VisComponent} />
+      </VisualizeContainer>
+    </Content>
+  </Router>
+);
 
 Visualize.propTypes = {
   match: PropTypes.object

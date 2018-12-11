@@ -283,7 +283,7 @@ module.exports = {
               {
                 loader: 'less-loader',
                 options: {
-                  modifyVars: { '@primary-color': '#1DA57A' },
+                  modifyVars: { '@primary-color': '#722ed1' },
                   javascriptEnabled: true
                 }
               }
