@@ -36,7 +36,7 @@ class Disk extends PureComponent {
 
         <RaidModal
           // 经过 Form.create 之后如果要拿到 ref ，使用 rc-form 提供的 wrappedComponentRef
-          wrappedComponentRef={formRef => this.formRef}
+          wrappedComponentRef={formRef => (this.formRef = formRef)}
           visible={this.state.visible}
           onCreate={this.handleCreate}
           onCancel={this.handleCancel}
