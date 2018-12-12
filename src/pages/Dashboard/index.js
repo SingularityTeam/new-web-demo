@@ -2,9 +2,9 @@ import React from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import TopNav from 'Components/TopNav';
 import Panel from './components/Panel';
-import { DashBoardContent, DashBoardBreadcrumb, DashBoardContainer } from './style';
 
 const { Content } = Layout;
+const { Item } = Breadcrumb;
 
 const navItem = [
   {
@@ -30,20 +30,16 @@ const navItem = [
 ];
 
 const DashBoard = () => (
-  <DashBoardContent>
-    <Content>
-      <DashBoardBreadcrumb>
-        <Breadcrumb>
-          <Breadcrumb.Item>首页</Breadcrumb.Item>
-          <Breadcrumb.Item>仪表盘</Breadcrumb.Item>
-        </Breadcrumb>
-      </DashBoardBreadcrumb>
-      <DashBoardContainer>
-        <TopNav typeName="dashboard" navItem={navItem} />
-        <Panel />
-      </DashBoardContainer>
-    </Content>
-  </DashBoardContent>
+  <Content className="content-wrapper">
+    <Breadcrumb className="breadcrumb-wrapper">
+      <Item>首页</Item>
+      <Item>仪表盘</Item>
+    </Breadcrumb>
+    <div className="container-layout">
+      <TopNav typeName="dashboard" navItem={navItem} />
+    </div>
+    <Panel />
+  </Content>
 );
 
 export default DashBoard;

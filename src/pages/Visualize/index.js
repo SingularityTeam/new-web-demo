@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Layout, Breadcrumb } from 'antd';
-import { VisualizeContainer } from './style';
 import TopNav from 'Components/TopNav';
 import ChartList from './components/ChartList';
 import VerticalBar from './components/Charts/VerticalBar';
@@ -64,16 +63,16 @@ const VisComponent = ({ match }) => {
 
 const Visualize = ({ match }) => (
   <Router>
-    <Content style={{ margin: '0 16px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
+    <Content className="content-wrapper">
+      <Breadcrumb className="breadcrumb-wrapper">
         <Breadcrumb.Item>首页</Breadcrumb.Item>
         <Breadcrumb.Item>可视化</Breadcrumb.Item>
       </Breadcrumb>
-      <VisualizeContainer>
+      <div className="container-layout">
         <TopNav typeName="visualize" navItem={navItem} />
         <ChartList />
         <Route path="/visualize/:id" component={VisComponent} />
-      </VisualizeContainer>
+      </div>
     </Content>
   </Router>
 );

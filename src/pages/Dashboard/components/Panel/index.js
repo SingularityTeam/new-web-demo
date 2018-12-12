@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { PanelContainer } from './style';
 
 const Panel = ({ panels }) => (
-  <PanelContainer>
+  <div>
     {panels.toJS().map(({ id, title, Component }) => (
       <Fragment key={title}>{Component}</Fragment>
     ))}
-  </PanelContainer>
+  </div>
 );
 
 Panel.propTypes = {

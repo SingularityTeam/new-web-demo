@@ -2,9 +2,9 @@ import React from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import DiscoverTable from './components/Table';
 import TopNav from 'Components/TopNav';
-import { DiscoverContainer } from './style';
 
 const { Content } = Layout;
+const { Item } = Breadcrumb;
 
 const navItem = [
   {
@@ -25,15 +25,15 @@ const navItem = [
 ];
 
 const Discover = () => (
-  <Content style={{ margin: '0 16px' }}>
-    <Breadcrumb style={{ margin: '16px 0' }}>
-      <Breadcrumb.Item>首页</Breadcrumb.Item>
-      <Breadcrumb.Item>搜索</Breadcrumb.Item>
+  <Content className="content-wrapper">
+    <Breadcrumb className="breadcrumb-wrapper">
+      <Item>首页</Item>
+      <Item>搜索</Item>
     </Breadcrumb>
-    <DiscoverContainer>
+    <div className="container-layout">
       <TopNav typeName="discover" navItem={navItem} DiscoverTable={DiscoverTable} />
       <DiscoverTable />
-    </DiscoverContainer>
+    </div>
   </Content>
 );
 
