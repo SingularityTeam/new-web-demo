@@ -3,19 +3,14 @@ import { Table } from 'antd';
 
 const columns = [
   {
-    title: '槽位号',
-    dataIndex: 'slotId',
-    width: '10%'
+    title: '卷名称',
+    dataIndex: 'rollName',
+    width: '15%'
   },
   {
-    title: '序列号',
-    dataIndex: 'serialId',
+    title: '使用率',
+    dataIndex: 'usageRate',
     width: '10%'
-  },
-  {
-    title: '所属RAID',
-    dataIndex: 'raid',
-    width: '20%'
   },
   {
     title: '容量',
@@ -23,13 +18,18 @@ const columns = [
     width: '10%'
   },
   {
-    title: '型号',
-    dataIndex: 'model',
+    title: '可用空间',
+    dataIndex: 'availableSpace',
+    width: '15%'
+  },
+  {
+    title: '所属设备',
+    dataIndex: 'device',
     width: '10%'
   },
   {
-    title: '温度',
-    dataIndex: 'temperature',
+    title: '卷类型',
+    dataIndex: 'type',
     width: '10%'
   },
   {
@@ -46,7 +46,7 @@ const columns = [
 
 const data = [];
 
-const DiskInfo = () => (
+const RollInfo = () => (
   <Table
     bordered
     columns={columns}
@@ -56,4 +56,4 @@ const DiskInfo = () => (
   />
 );
 
-export default DiskInfo;
+export default RollInfo;
