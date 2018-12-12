@@ -112,7 +112,7 @@ class SideBar extends PureComponent {
               <Item key="673">恢复</Item>
             </SubMenu>
             <SubMenu key={`${match.path}/management/sysmanage/storage`} title="系统管理">
-              <Item key={`${match.path}/management/sysmanage/storage/disk`}>
+              <Item key={`${match.path}/management/sysmanage/storage`}>
                 <NavLink to={`${match.path}/management/sysmanage/storage`}>存储管理</NavLink>
               </Item>
               <Item key="682">容器及服务管理</Item>
