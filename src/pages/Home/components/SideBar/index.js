@@ -108,7 +108,9 @@ class SideBar extends PureComponent {
               <Item key="664">
                 <NavLink to={`${match.path}/management/sysconfig/licence`}>许可证管理</NavLink>
               </Item>
-              <Item key="665">SMTP配置</Item>
+              <Item key="665">
+                <NavLink to={`${match.path}/management/sysconfig/snmp`}>SMTP配置</NavLink>
+              </Item>
             </SubMenu>
             <SubMenu key="67" title="备份设置">
               <Item key="671">备份</Item>
@@ -119,7 +121,9 @@ class SideBar extends PureComponent {
               <Item key={`${match.path}/management/sysmanage/storage`}>
                 <NavLink to={`${match.path}/management/sysmanage/storage`}>存储管理</NavLink>
               </Item>
-              <Item key="682">容器及服务管理</Item>
+              <Item key={`${match.path}/management/sysmanage/container`}>
+                <NavLink to={`${match.path}/management/sysmanage/container`}>容器及服务管理</NavLink>
+              </Item>
             </SubMenu>
           </SubMenu>
         </Menu>
