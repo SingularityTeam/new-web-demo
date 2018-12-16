@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { Layout, Breadcrumb, Menu, Tabs } from 'antd';
+import { Layout, Breadcrumb, Menu } from 'antd';
 import Disk from './Disk';
 import Raid from './Raid';
 import Roll from './Roll';
@@ -10,7 +10,7 @@ import '../../style.less';
 const { Content } = Layout;
 const BreadcrumbItem = Breadcrumb.Item;
 const MenuItem = Menu.Item;
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
 // const tabs = ['磁盘管理', 'RAID管理', '卷管理'];
 const items = [
