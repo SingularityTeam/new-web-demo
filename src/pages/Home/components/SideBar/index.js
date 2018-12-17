@@ -106,6 +106,12 @@ class SideBar extends PureComponent {
               <Item key="661">登录配置</Item>
               <Item key="662">系统配置</Item>
               <Item key="663">白名单</Item>
+              <Item key="664">
+                <NavLink to={`${match.path}/management/sysconfig/licence`}>许可证管理</NavLink>
+              </Item>
+              <Item key="665">
+                <NavLink to={`${match.path}/management/sysconfig/snmp`}>SMTP配置</NavLink>
+              </Item>
             </SubMenu>
             <SubMenu key="67" title="备份设置">
               <Item key="671">备份</Item>

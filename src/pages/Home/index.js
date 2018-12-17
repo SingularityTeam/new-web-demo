@@ -8,6 +8,8 @@ import Discover from '../Discover';
 import Visualize from '../Visualize';
 import DashBoard from '../Dashboard';
 import Storage from '../Management/sysmanage/Storage';
+import Licence from '../Management/sysconfig/Licence';
+import SnmpConfig from '../Management/sysconfig/SnmpConfig'
 import Container from '../Management/sysmanage/Container';
 import './style.less';
 
@@ -22,6 +24,8 @@ const Home = ({ match, history }) => (
         <Route path={`${match.path}/visualize`} component={Visualize} />
         <Route path={`${match.path}/dashboard`} component={DashBoard} />
         <Route path={`${match.path}/management/sysmanage/storage`} component={Storage} />
+        <Route path={`${match.path}/management/sysconfig/licence`} component={Licence} />
+        <Route path={`${match.path}/management/sysconfig/snmp`} component={SnmpConfig} />
         <Route path={`${match.path}/management/sysmanage/container`} component={Container} />
         <Redirect to={`${match.url}`} />
       </Switch>

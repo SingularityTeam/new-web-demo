@@ -10,7 +10,7 @@ import '../../style.less';
 
 const { Content } = Layout;
 const MenuItem = Menu.Item;
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
 // const tabs = ['磁盘管理', 'RAID管理', '卷管理'];
 const items = [

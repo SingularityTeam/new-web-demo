@@ -16,7 +16,6 @@ class Disk extends PureComponent {
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('接受到的表单值：', values);
         form.resetFields();
         this.setState(() => ({ visible: false }));
       }
