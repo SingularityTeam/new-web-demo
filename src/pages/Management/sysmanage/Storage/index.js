@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { Layout, Breadcrumb, Menu, Tabs } from 'antd';
+import { Layout, Menu, Tabs } from 'antd';
+import Breadcrumbs from 'Components/Breadcrumbs';
 import Disk from './Disk';
 import Raid from './Raid';
 import Roll from './Roll';
 import '../../style.less';
 
 const { Content } = Layout;
-const BreadcrumbItem = Breadcrumb.Item;
 const MenuItem = Menu.Item;
 const { TabPane } = Tabs;
 
@@ -26,13 +26,7 @@ const Storage = ({ match, history }) => {
 
   return (
     <Content className="content-wrapper">
-      <Breadcrumb className="breadcrumb-wrapper">
-        <BreadcrumbItem>首页</BreadcrumbItem>
-        <BreadcrumbItem>管理</BreadcrumbItem>
-        <BreadcrumbItem>系统管理</BreadcrumbItem>
-        <BreadcrumbItem>存储管理</BreadcrumbItem>
-        <BreadcrumbItem>磁盘管理</BreadcrumbItem>
-      </Breadcrumb>
+      <Breadcrumbs pathname={pathname} />
 
       <div className="container-layout">
         {/* <Tabs>

@@ -26,6 +26,7 @@ class SideBar extends PureComponent {
     const { match, history } = this.props;
     const { isCollapsed } = this.state;
     const { pathname } = history.location;
+    console.log(pathname, match.path);
     // 根据路由来匹配侧边栏菜单高亮
     const selectedKeys = pathname === match.path ? `${match.path}/discover` : pathname;
 

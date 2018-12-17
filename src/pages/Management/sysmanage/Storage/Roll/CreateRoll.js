@@ -30,8 +30,6 @@ class CreateRoll extends PureComponent {
         centered
         visible={visible}
         title="创建卷"
-        okText="确定"
-        cancelText="取消"
         onOk={onCreate}
         onCancel={onCancel}
       >

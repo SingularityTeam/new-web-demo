@@ -19,15 +19,7 @@ class CreateRaid extends PureComponent {
     const { getFieldDecorator } = form;
 
     return (
-      <Modal
-        centered
-        visible={visible}
-        title="创建RAID"
-        okText="确定"
-        cancelText="取消"
-        onOk={onCreate}
-        onCancel={onCancel}
-      >
+      <Modal centered visible={visible} title="创建RAID" onOk={onCreate} onCancel={onCancel}>
         <Form>
           <Item {...formItemLayout} label="RAID名称">
             {getFieldDecorator('title', {
