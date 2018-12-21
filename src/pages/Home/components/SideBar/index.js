@@ -2,9 +2,14 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
+import iconfont from 'Assets/iconfont';
+import ARLogo from 'Assets/images/ar_logo.png';
 
 const { Sider } = Layout;
 const { SubMenu, Item } = Menu;
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: iconfont
+});
 
 class SideBar extends PureComponent {
   static propTypes = {
@@ -26,31 +31,50 @@ class SideBar extends PureComponent {
     const { match, history } = this.props;
     const { isCollapsed } = this.state;
     const { pathname } = history.location;
-    console.log(pathname, match.path);
     // 根据路由来匹配侧边栏菜单高亮
     const selectedKeys = pathname === match.path ? `${match.path}/discover` : pathname;
 
     return (
-      <Sider collapsible collapsed={isCollapsed} onCollapse={this.handleCollapse}>
-        <div className="home-logo" />
+      <Sider
+        // trigger={null}
+        collapsible
+        collapsed={isCollapsed}
+        onCollapse={this.handleCollapse}
+        className={`fixed-sidebar ${isCollapsed ? 'collapse-sider-layout' : 'expand-sider-layout'}`}
+      >
+        {/* LOGO设置 */}
+        <div className="ar-logo">
+          <img alt="Eisoo-AR-Logo" src={ARLogo} />
+        </div>
+
+        {/* 导航栏菜单 */}
         <Menu theme="dark" mode="inline" selectedKeys={[selectedKeys]}>
+          <Item key={`${match.path}/overview`}>
+            <NavLink to={`${match.path}/overview`}>
+              <IconFont type="icon-overview" />
+              <span>总览</span>
+            </NavLink>
+          </Item>
+
           <Item key={`${match.path}/discover`}>
             <NavLink to={`${match.path}/discover`}>
-              <Icon type="search" />
+              <IconFont type="icon-search" />
               <span>搜索</span>
             </NavLink>
           </Item>
+
           <Item key={`${match.path}/visualize`}>
             <NavLink to={`${match.path}/visualize`}>
-              <Icon type="eye" />
+              <IconFont type="icon-visualization" />
               <span>可视化</span>
             </NavLink>
           </Item>
+
           <SubMenu
             key="3"
             title={
               <span>
-                <Icon type="database" />
+                <IconFont type="icon-data-source" />
                 <span>数据源</span>
               </span>
             }
@@ -59,18 +83,14 @@ class SideBar extends PureComponent {
             <Item key="32">本地上传</Item>
             <Item key="33">远程采集</Item>
             <Item key="34">代理上传</Item>
-            <SubMenu key="35" title="Agent管理">
-              <Item key="351">主机</Item>
-              <Item key="352">配置模板</Item>
-              <Item key="353">主机组</Item>
-              <Item key="354">认证信息</Item>
-            </SubMenu>
+            <Item key="35">Agent管理</Item>
           </SubMenu>
+
           <SubMenu
             key="4"
             title={
               <span>
-                <Icon type="warning" />
+                <IconFont type="icon-warning" />
                 <span>告警</span>
               </span>
             }
@@ -78,17 +98,33 @@ class SideBar extends PureComponent {
             <Item key="41">告警记录</Item>
             <Item key="42">告警策略</Item>
           </SubMenu>
+
           <Item key={`${match.path}/dashboard`}>
             <NavLink to={`${match.path}/dashboard`}>
-              <Icon type="dashboard" />
+              <IconFont type="icon-dashboard" />
               <span>仪表盘</span>
             </NavLink>
           </Item>
+
+          <SubMenu
+            key="5"
+            title={
+              <span>
+                <IconFont type="icon-machine-learning" />
+                <span>机器学习</span>
+              </span>
+            }
+          >
+            <Item key={`${match.path}/machine-learning/abnormal-detection`}>
+              <NavLink to={`${match.path}/machine-learning/abnormal-detection`}>异常检测</NavLink>
+            </Item>
+          </SubMenu>
+
           <SubMenu
             key="6"
             title={
               <span>
-                <Icon type="setting" />
+                <IconFont type="icon-setting" />
                 <span>管理</span>
               </span>
             }
@@ -96,11 +132,9 @@ class SideBar extends PureComponent {
             <Item key="61">日志分组</Item>
             <Item key="62">对象管理</Item>
             <Item key="63">高级设置</Item>
-            <SubMenu key="64" title="权限管理">
-              <Item key="641">用户管理</Item>
-              <Item key="642">角色管理</Item>
-              <Item key="643">权责模式</Item>
-            </SubMenu>
+            <Item key={`${match.path}/management/authority`}>
+              <NavLink to={`${match.path}/management/authority`}>权限管理</NavLink>
+            </Item>
             <Item key="65">审计日志</Item>
             <SubMenu key="66" title="系统配置">
               <Item key="661">登录配置</Item>
@@ -128,6 +162,11 @@ class SideBar extends PureComponent {
             </SubMenu>
           </SubMenu>
         </Menu>
+
+        {/* 折叠触发器 */}
+        <div className="collapse-trigger">
+          <IconFont type="icon-collapse" />
+        </div>
       </Sider>
     );
   }

@@ -17,6 +17,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const customTheme = require('./custom_antd_theme');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -148,6 +149,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       Actions: path.resolve(__dirname, '../src/actions'),
+      Assets: path.resolve(__dirname, '../src/assets'),
       Components: path.resolve(__dirname, '../src/components'),
       Pages: path.resolve(__dirname, '../src/pages')
     },
@@ -283,7 +285,7 @@ module.exports = {
               {
                 loader: 'less-loader',
                 options: {
-                  modifyVars: { '@primary-color': '#722ed1' },
+                  modifyVars: customTheme,
                   javascriptEnabled: true
                 }
               }

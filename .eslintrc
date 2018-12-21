@@ -23,6 +23,7 @@
     "no-console": "warn",
     "no-debugger": "warn",
     "no-unused-vars": "warn",
-    "import/no-unresolved": ["error", { "ignore": ["^@/", "Actions", "Components", "Pages"] }]
+    "react/display-name": "off",
+    "import/no-unresolved": ["error", { "ignore": ["^@/", "Actions", "Assets", "Components", "Pages"] }]
   }
 }

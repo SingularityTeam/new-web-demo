@@ -9,3 +9,5 @@
 
 # docs
 **/docs/**
+
+/src/assets/*.js

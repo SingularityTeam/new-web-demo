@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Tabs } from 'antd';
+import { Layout, Menu } from 'antd';
 import Breadcrumbs from 'Components/Breadcrumbs';
 import Disk from './Disk';
 import Raid from './Raid';

@@ -1,9 +1,61 @@
 .home-layout {
-  min-height: 100vh;
+  .fixed-sidebar {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    overflow: auto;
+  }
 
-  .home-logo {
+  .expend-home-container {
+    margin-left: 168px;
+  }
+
+  .collapse-home-container {
+    margin-left: 48px;
+  }
+
+  // 展开侧边栏时的宽度
+  .expand-sider-layout {
+    flex: 0 0 168px !important;
+    max-width: 168px !important;
+    min-width: 168px !important;
+    width: 168px !important;
+
+    .ant-layout-sider-trigger {
+      width: 168px !important;
+    }
+  }
+
+  // 折叠侧边栏时的宽度
+  .collapse-sider-layout {
+    flex: 0 0 48px !important;
+    max-width: 48px !important;
+    min-width: 48px !important;
+    width: 48px !important;
+
+    .ant-layout-sider-trigger {
+      width: 48px !important;
+    }
+  }
+
+  .ar-logo {
+    background-color: @primary-color;
+    width: 168px;
+    height: 48px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .collapse-trigger {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+    background-color: #060e23;
+    text-align: right;
   }
 }

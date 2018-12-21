@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
 
 const { Item } = Breadcrumb;
 
 const itemMap = new Map([
   ['home', '首页'],
+  ['machine-learning', '机器学习'],
+  ['abnormal-detection', '异常检测'],
   ['management', '管理'],
+  ['authority', '权限管理'],
   ['sysmanage', '系统管理'],
   ['storage', '存储管理'],
   ['disk', '磁盘管理'],
