@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, Col, Button, message, Divider, Icon } from 'antd';
+import { Row, Col, message, Divider, Icon } from 'antd';
 import { setLoggedUser } from 'Actions/login';
+import iconfont from 'Assets/iconfont';
 import './style.less';
+
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: iconfont
+});
 
 const Header = ({ logoutApp, history }) => {
   const logout = () => {
@@ -17,19 +22,15 @@ const Header = ({ logoutApp, history }) => {
   return (
     <Row className="header-wrapper">
       <Col offset={20} span={4}>
-        
+        <IconFont type="icon-intl"></IconFont>
         <span>简体中文</span>
         <Divider type="vertical" />
+        <IconFont type="icon-user"></IconFont>
         <span>用户名</span>
         <Divider type="vertical" />
+        <IconFont type="icon-about"></IconFont>
         <span>关于</span>
       </Col>
-      {/* <Col span={2}>
-        <Button onClick={logout}>用户名</Button>
-      </Col>
-      <Col span={2}>
-        <Button onClick={logout}>关于</Button>
-      </Col> */}
     </Row>
   );
 };

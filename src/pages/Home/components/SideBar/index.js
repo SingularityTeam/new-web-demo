@@ -79,11 +79,12 @@ class SideBar extends PureComponent {
               </span>
             }
           >
-            <Item key="31">TCP/UDP上传</Item>
+            <Item key="31">数据输入</Item>
             <Item key="32">本地上传</Item>
             <Item key="33">远程采集</Item>
-            <Item key="34">代理上传</Item>
-            <Item key="35">Agent管理</Item>
+            <Item key="34">Agent管理</Item>
+            <Item key="35">文件统计</Item>
+            <Item key="36">日志库管理</Item>
           </SubMenu>
 
           <SubMenu
@@ -104,6 +105,11 @@ class SideBar extends PureComponent {
               <IconFont type="icon-dashboard" />
               <span>仪表盘</span>
             </NavLink>
+          </Item>
+
+          <Item key="topology">
+            <IconFont type="icon-topology" />
+            <span>拓扑图</span>
           </Item>
 
           <SubMenu
@@ -136,7 +142,9 @@ class SideBar extends PureComponent {
               <NavLink to={`${match.path}/management/authority`}>权限管理</NavLink>
             </Item>
             <Item key="65">审计日志</Item>
-            <SubMenu key="66" title="系统配置">
+            <Item key="66">系统配置</Item>
+            <Item key="67">备份管理</Item>
+            {/* <SubMenu key="66" title="系统配置">
               <Item key="661">登录配置</Item>
               <Item key="662">系统配置</Item>
               <Item key="663">白名单</Item>
@@ -159,14 +167,14 @@ class SideBar extends PureComponent {
               <Item key={`${match.path}/management/sysmanage/container`}>
                 <NavLink to={`${match.path}/management/sysmanage/container`}>容器及服务管理</NavLink>
               </Item>
-            </SubMenu>
+            </SubMenu> */}
           </SubMenu>
         </Menu>
 
         {/* 折叠触发器 */}
-        <div className="collapse-trigger">
+        {/* <div className="collapse-trigger">
           <IconFont type="icon-collapse" />
-        </div>
+        </div> */}
       </Sider>
     );
   }

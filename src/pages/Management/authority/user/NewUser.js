@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input } from 'antd';
+import { Form, Input, Table, Radio } from 'antd';
 
 const FormItem = Form.Item;
+const { TextArea } = Input;
+const { Column } = Table;
 
 class NewUserForm extends PureComponent {
   static propTypes = {
@@ -34,15 +36,19 @@ class NewUserForm extends PureComponent {
         </FormItem>
 
         <FormItem {...formItemLayoout} label="邮箱">
-          <Input placeholder="请输入邮箱" />
+          {getFieldDecorator('email')(<Input placeholder="请输入邮箱" />)}
         </FormItem>
 
         <FormItem {...formItemLayoout} label="角色">
-          <Input />
+          <Table >
+            <Column title="角色" dataIndex="role" align="center" />
+            <Column title="描述" dataIndex="description" align="center" />
+          </Table>
+          {/* {getFieldDecorator('role')(<Radio />)} */}
         </FormItem>
 
         <FormItem {...formItemLayoout} label="描述">
-          <Input />
+          {getFieldDecorator('description')(<TextArea rows={6} />)}
         </FormItem>
       </Form>
     );

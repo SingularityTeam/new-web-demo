@@ -19,7 +19,10 @@ const Home = ({ match, history }) => (
   <Layout className="home-layout">
     <SideBar match={match} history={history} />
     <Layout className="expend-home-container">
-      <Header history={history} />
+      <div>
+        <Header history={history} />
+      </div>
+
       <Switch>
         <Route path={`${match.path}`} exact component={Discover} />
         <Route path={`${match.path}/discover`} component={Discover} />
